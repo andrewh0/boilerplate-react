@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var PROD = (process.env.NODE_ENV === 'production');
+
 module.exports = {
   entry: './client/index.js',
   output: { path: __dirname, filename: './client/bundle.js' },
@@ -17,11 +19,11 @@ module.exports = {
       }
     ],
   },
-  plugins: [
+  plugins: PROD ? [
     new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
+      compress: {
+        warnings: false
+      }
     })
-  ]
+  ] : []
 };
