@@ -15,6 +15,13 @@ module.exports = {
           presets: ['es2015', 'react']
         }
       }
-    ]
-  }
+    ],
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    })
+  ]
 };
